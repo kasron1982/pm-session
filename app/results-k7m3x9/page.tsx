@@ -15,8 +15,8 @@ type FeedbackRow = {
   open_feedback: string;
 };
 
-function avg(rows: FeedbackRow[], key: keyof FeedbackRow) {
-  if (!rows.length) return 0;
+function avg(rows: FeedbackRow[], key: keyof FeedbackRow): string {
+  if (!rows.length) return "0.0";
   return (
     rows.reduce((sum, r) => sum + (r[key] as number), 0) / rows.length
   ).toFixed(1);
