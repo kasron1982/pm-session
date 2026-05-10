@@ -140,6 +140,47 @@ export default async function ResultsPage() {
                 ))}
               </ul>
             </div>
+
+            {/* All responses table */}
+            <div className="rounded-2xl bg-white dark:bg-zinc-900 p-8">
+              <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-widest mb-6">All Responses</h2>
+              <div className="space-y-6">
+                {rows.map((r, i) => (
+                  <div key={r.id} className="rounded-xl border border-zinc-100 dark:border-zinc-800 p-5">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-xs font-semibold text-zinc-400">Response #{rows.length - i}</span>
+                      <span className="text-xs text-zinc-400">
+                        {new Date(r.created_at).toLocaleDateString("en-US", {
+                          month: "short", day: "numeric", year: "numeric",
+                        })}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3 text-sm mb-4">
+                      <div>
+                        <p className="text-zinc-400 text-xs mb-0.5">First impression</p>
+                        <p className="text-black dark:text-white font-medium">{r.first_impression}</p>
+                      </div>
+                      <div>
+                        <p className="text-zinc-400 text-xs mb-0.5">Clarity</p>
+                        <p className="text-black dark:text-white font-medium">{r.clarity} / 5</p>
+                      </div>
+                      <div>
+                        <p className="text-zinc-400 text-xs mb-0.5">Visual appeal</p>
+                        <p className="text-black dark:text-white font-medium">{r.visual_appeal} / 5</p>
+                      </div>
+                      <div>
+                        <p className="text-zinc-400 text-xs mb-0.5">Navigation</p>
+                        <p className="text-black dark:text-white font-medium">{r.navigation} / 5</p>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-zinc-400 text-xs mb-0.5">What they'd change</p>
+                      <p className="text-black dark:text-white text-sm">{r.open_feedback}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </>
         )}
       </div>
